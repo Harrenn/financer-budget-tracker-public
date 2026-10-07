@@ -1,0 +1,30 @@
+# Private runtime data and backups
+data/
+backups/
+*.sqlite
+*.sqlite3
+*.db
+*-wal
+*-shm
+*-journal
+*.log
+
+# Local credentials
+.env
+.env.*
+!.env.example
+secrets/
+credentials/
+*.pem
+*.key
+
+# Python and editor artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+.DS_Store
+.idea/
+.vscode/

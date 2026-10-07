@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+set -eu
+
+FINANCER_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+
+if [ -x "$FINANCER_ROOT/.venv/bin/python" ]; then
+    FINANCER_PYTHON="$FINANCER_ROOT/.venv/bin/python"
+elif command -v python3 >/dev/null 2>&1; then
+    FINANCER_PYTHON=$(command -v python3)
+else
+    echo "No usable Python runtime found. Install Python 3 or create .venv/bin/python." >&2
+    exit 1
+fi
+
+exec env PYTHONUTF8=1 PYTHONIOENCODING=utf-8 \
+    "$FINANCER_PYTHON" "$FINANCER_ROOT/finance.py" "$@"
